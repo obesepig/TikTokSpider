@@ -159,7 +159,7 @@ def download_video(index, username, name, url, retry=3):
         # 保存视频，显示下载进度
         if video_response.status_code == 200:
             video_size = int(video_response.headers['Content-Length'])
-            with open('%s/%s.mp4' % (username, name), 'wb') as f:
+            with open('%s/第%s个视频-%s.mp4' % (username,index, name.replace(' ','').replace('/','').replace('\n','').replace('\r','').replace(':','').replace('|','')), 'wb') as f:
                 data_length = 0
                 for data in video_response.iter_content(chunk_size=1024):
                     data_length += len(data)
